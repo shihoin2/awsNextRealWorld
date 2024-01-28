@@ -8,7 +8,7 @@ import Footer from "../../components/Footer"
 import Link from "next/link";
 import React, { useState, useEffect } from 'react';
 import { Titillium_Web } from "next/font/google";
-import { useRouter, useSearchParams, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 
 export default function Home() {
   const params = useParams();
@@ -33,32 +33,25 @@ export default function Home() {
     }
   };
 
-
   useEffect(() => {
     fetchArticles();
   }, [id]);
 
-  // useEffect(() => {
-  //   if(title) {
-  //     createArticles();
-  //   }
-  // },[]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/articles/${id}`,  {
-      method: 'POST',
-      headers: {
-        'Content-type' : 'application/json',
-      },
-      body: JSON.stringify({
-        title: title,
-        summary: summary,
-        body: body,
-        tagList: tagList,
-      }),});
+      const res = await fetch(`http://127.0.0.1:8000/api/articles/${id}`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: title,
+          summary: summary,
+          body: body,
+          tagList: tagList,
+        }),
+      });
       const data = await res.json();
       console.log('Article created:', data);
 
@@ -143,10 +136,7 @@ export default function Home() {
             </div>
           </div>
         </>
-
       ) : (<div>Loading...</div>)}
-
-
       <Footer />
     </>
   );

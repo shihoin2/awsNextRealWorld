@@ -7,12 +7,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer"
 import Link from "next/link";
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { PagesRouteModule } from "next/dist/server/future/route-modules/pages/module.compiled";
-
-
-
+import { useSearchParams } from 'next/navigation';
 
 export default function Home() {
   const [articles, setArticles] = useState(null);
@@ -25,12 +20,8 @@ export default function Home() {
     try {
       const res = await fetch(`http://127.0.0.1:8000/api/articles?page=${page}`)
       const data = await res.json();
-      console.log(data);
       setArticles(data);
-      console.log(data);
       setPageData(data);
-      console.log(data);
-
     } catch (error) {
       console.error('Error:', error);
     }
@@ -50,7 +41,7 @@ export default function Home() {
         articles.data.map(article => (
           <Contents key={article.id} article={article} />
         ))) : (<div>Loading...</div>)}
-      {pageData ? (<Pagination key={pageData.data.id} pageData={pageData} setPageData={setPageData}  />
+      {pageData ? (<Pagination key={pageData.data.id} pageData={pageData} setPageData={setPageData} />
       ) : (<div>Loading...</div>)}
       <Footer />
     </>
@@ -123,27 +114,23 @@ const PageTop = () => {
           </div>
         </div>
       </div>
-
     </>
   );
 }
 
 
-const Pagination = ({pageData, setPageData}) => {
-   const fetchPage = async (url) => {
+const Pagination = ({ pageData, setPageData }) => {
+  const fetchPage = async (url) => {
     try {
       const res = await fetch(url);
-    const data = await res.json();
-    setPageData(data);
-
-  } catch (error) {
-    console.error('Error:', error);
-
-  }
+      const data = await res.json();
+      setPageData(data);
+    } catch (error) {
+      console.error('Error:', error);
     }
+  }
 
-
-  return(
+  return (
     <>
       <div>
         <ul className="pagination">
@@ -191,7 +178,6 @@ const Pagination = ({pageData, setPageData}) => {
           </div>
         </div>
       </div>
-      </>
-
-    );
+    </>
+  );
 }

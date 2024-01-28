@@ -9,7 +9,6 @@ const Head = ({ title }: HeadProps) => {
     <>
       <meta charSet="utf-8" />
       <title>{title}</title>
-      {/* Import Ionicon icons & Google Fonts our Bootstrap theme relies on */}
       <link
         href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
         rel="stylesheet"
@@ -20,7 +19,6 @@ const Head = ({ title }: HeadProps) => {
         rel="stylesheet"
         type="text/css"
       />
-      {/* Import the custom Bootstrap 4 theme from our hosted CDN */}
       <link rel="stylesheet" href="//demo.productionready.io/main.css" />
     </>
   );

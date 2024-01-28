@@ -20,6 +20,5 @@ export default function Pagination({ pageData }) {
         </ul>
       </div>
       </>
-
     );
 }

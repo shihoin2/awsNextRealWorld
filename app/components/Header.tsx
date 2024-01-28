@@ -11,7 +11,6 @@ const Header = () => {
           </Link>
           <ul className="nav navbar-nav pull-xs-right">
             <li className="nav-item">
-              {/* Add "active" class when you're on that page" */}
               <Link className="nav-link active" href="/">
                 Home
               </Link>
