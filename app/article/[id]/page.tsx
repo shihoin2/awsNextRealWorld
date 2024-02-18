@@ -20,7 +20,7 @@ export default function Home() {
 
   const fetchArticles = async () => {
     try {
-      const res = await fetch(`http://osyokuzi.com/api/articles/${id}`)
+      const res = await fetch(`https://osyokuzi.com/api/articles/${id}`)
 
       const data = await res.json();
       setArticles(data);
@@ -38,7 +38,7 @@ export default function Home() {
 
   const deleteArticle = async () => {
     try {
-      const res = await fetch(`http://osyokuzi.com/api/articles/${id}`, {
+      const res = await fetch(`https://osyokuzi.com/api/articles/${id}`, {
         method: 'delete',
       });
       const data = await res.json();

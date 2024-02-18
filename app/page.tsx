@@ -20,7 +20,7 @@ export default function Home() {
 
   const fetchArticles = async () => {
     try {
-      const res = await fetch(`http://osyokuzi.com/api/articles?page=${page}`)
+      const res = await fetch(`https://osyokuzi.com/api/articles?page=${page}`)
       const data = await res.json();
       setArticles(data);
       setPageData(data);

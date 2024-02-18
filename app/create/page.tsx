@@ -16,7 +16,7 @@ export default function Home() {
 
   const createArticles = async () => {
     try {
-      const res = await fetch(`http://osyokuzi.com/api/articles`);
+      const res = await fetch(`https://osyokuzi.com/api/articles`);
       const data = await res.json();
       setTitle(data);
     } catch (error) {
@@ -33,7 +33,7 @@ export default function Home() {
   const handleSubmit = async (e:any) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://osyokuzi.com/api/articles`, {
+      const res = await fetch(`https://osyokuzi.com/api/articles`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
