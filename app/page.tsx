@@ -6,12 +6,14 @@ import Head from "./components/Head";
 import Header from "./components/Header";
 import Footer from "./components/Footer"
 import Link from "next/link";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 export default function Home() {
-  const [articles, setArticles] = useState(null);
-  const [pageData, setPageData] = useState(null);
+  const [articles, setArticles] = useState<{data:any} | null>(null);
+  // const [articles, setArticles] = useState(null);
+  const [pageData, setPageData] = useState<{data:any} | null>(null);
+  // const [pageData, setPageData] = useState(null);
 
   const searchParams = useSearchParams()
   const page = searchParams.get('page')
@@ -38,7 +40,7 @@ export default function Home() {
       <Header />
       <PageTop />
       {articles ? (
-        articles.data.map(article => (
+        articles.data.map((article:any) => (
           <Contents key={article.id} article={article} />
         ))) : (<div>Loading...</div>)}
       {pageData ? (<Pagination key={pageData.data.id} pageData={pageData} setPageData={setPageData} />
@@ -48,7 +50,7 @@ export default function Home() {
   );
 }
 
-const Contents = ({ article }) => {
+const Contents = ({ article }:{article:any}) => {
   return (
     <>
       <div className="article-preview">
@@ -119,8 +121,8 @@ const PageTop = () => {
 }
 
 
-const Pagination = ({ pageData, setPageData }) => {
-  const fetchPage = async (url) => {
+const Pagination = ({ pageData, setPageData }:{pageData:any; setPageData:any;}) => {
+  const fetchPage = async (url:any) => {
     try {
       const res = await fetch(url);
       const data = await res.json();
@@ -134,7 +136,7 @@ const Pagination = ({ pageData, setPageData }) => {
     <>
       <div>
         <ul className="pagination">
-          {pageData.links.map(link => (
+          {pageData.links.map((link:any) => (
             <li key={link.label} className={`page-item ${link.active ? 'active' : ''}`}>
               {link.url ? (
                 <Link className="page-link" href="#" onClick={() => fetchPage(link.url)}>

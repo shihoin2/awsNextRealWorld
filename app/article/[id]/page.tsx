@@ -67,7 +67,7 @@ export default function Home() {
 
 
 
-const Contents = ({ articles, deleteArticle }) => {
+const Contents = ({ articles, deleteArticle }:{articles: any; deleteArticle: any}) => {
   const router = useRouter();
   const linkToEditor = () => {
     router.push(`/editor/${articles.article.id}`)
@@ -160,11 +160,11 @@ const Contents = ({ articles, deleteArticle }) => {
 }
 
 
-const Comment = ({ articles }) => {
+const Comment = ({ articles }:{articles:any;}) => {
   return (
     <>
       {articles ? (
-        articles.comments.map(comment => (
+        articles.comments.map((comment:any) => (
           <>
             <div className="card">
               <div className="card-block">
@@ -195,7 +195,7 @@ const Comment = ({ articles }) => {
   );
 }
 
-const CommentForm = ({ articles }) => {
+const CommentForm = ({ articles }:{articles:any;}) => {
   return (
     <>
       <div className="row">

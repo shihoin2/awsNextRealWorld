@@ -14,7 +14,8 @@ export default function Home() {
   const params = useParams();
   const id = params.id
 
-  const [articles, setArticles] = useState(null);
+  // const [articles, setArticles] = useState(null);
+  const [articles, setArticles] = useState<{ title: string, summary: string, body: string, tagList: string } | null>(null);
 
 
   const [title, setTitle] = useState('');
@@ -29,6 +30,7 @@ export default function Home() {
       setArticles(data);
     } catch (error) {
       console.error('Error:', error);
+      // setArticles(null);
       setArticles(null);
     }
   };
@@ -37,7 +39,7 @@ export default function Home() {
     fetchArticles();
   }, [id]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const res = await fetch(`http://127.0.0.1:8000/api/articles/${id}`, {

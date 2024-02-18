@@ -21,7 +21,7 @@ export default function Home() {
       setTitle(data);
     } catch (error) {
       console.error('Error:', error);
-      setTitle(null);
+      setTitle('');
     }
   };
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Home() {
     }
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
     try {
       const res = await fetch(`http://127.0.0.1:8000/api/articles`, {
