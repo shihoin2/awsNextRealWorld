@@ -25,7 +25,7 @@ export default function Home() {
 
   const fetchArticles = async () => {
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/articles/${id}`);
+      const res = await fetch(`http://osyokuzi.com/api/articles/${id}`);
       const data = await res.json();
       setArticles(data);
     } catch (error) {
@@ -42,7 +42,7 @@ export default function Home() {
   const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/articles/${id}`, {
+      const res = await fetch(`http://osyokuzi.com/api/articles/${id}`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
