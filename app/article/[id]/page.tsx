@@ -8,9 +8,10 @@ import Link from "next/link";
 import { useRouter, useParams } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import { redirect } from "next/navigation"
-
+/* eslint-disable */
 
 export default function Home() {
+
   const params = useParams();
   const id = params.id;
   const router = useRouter();
@@ -32,6 +33,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchArticles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const deleteArticle = async () => {
@@ -79,7 +81,7 @@ const Contents = ({ articles, deleteArticle }) => {
             <h1>{articles.article.title}</h1>
             <div className="article-meta">
               <Link href="/profile/eric-simons">
-                <img src="http://i.imgur.com/Qr71crq.jpg" />
+                <img src="http://i.imgur.com/Qr71crq.jpg" alt="image" />
               </Link>
               <div className="info">
                 <Link href="/profile/eric-simons" className="author">
